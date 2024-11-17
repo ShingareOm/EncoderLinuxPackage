@@ -1,8 +1,11 @@
 # Encoder Electron App (Package created using ChatGPT) 
+![Output Screenshot](./output.png)
 
 This is an **Electron** application that wraps the **Encoder ReactJS** project, which allows users to encode and decode text using various encoding formats such as Uppercase, Lowercase, SHA256, and Base64.
 
 The Electron app provides a desktop version of the React-based web application, making it easily accessible on your local machine without needing a browser.
+
+
 
 ## Features
 
