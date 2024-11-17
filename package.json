@@ -1,0 +1,22 @@
+{
+  "name": "encoder",
+  "version": "0.0.1",
+  "description": "Example Desktop APP Build Using Electron.",
+  "main": "main.js",
+  "scripts": {
+    "package-linux": "electron-packager .  encoder --overwrite --platform=linux --arch=x64 --asar --prune=true --out=release-builds",
+    "create-debian-installer": "electron-installer-debian --src release-builds/encoder-linux-x64/ --arch amd64 --config debian.json"
+  },
+  "keywords": [
+    "encoder"
+  ],
+  "author": "Om Shingare",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^26.2.4",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "electron-context-menu": "^3.6.1"
+  }
+}
