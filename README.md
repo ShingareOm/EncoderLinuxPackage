@@ -1,116 +1,188 @@
-# Electron Linux Desktop APPlication
+# Encoder Electron App (Package created using ChatGPT) 
 
-[![dependencies Status](https://david-dm.org/mskian/electron-example/status.png)](https://david-dm.org/mskian/electron-example) [![Build Status](https://travis-ci.org/mskian/electron-example.svg?branch=master)](https://travis-ci.org/mskian/electron-example)  
+This is an **Electron** application that wraps the **Encoder ReactJS** project, which allows users to encode and decode text using various encoding formats such as Uppercase, Lowercase, SHA256, and Base64.
 
-Convert your website/blog into Linux Desktop Application Build using Electron
+The Electron app provides a desktop version of the React-based web application, making it easily accessible on your local machine without needing a browser.
 
-## Requirements
+## Features
 
-- Electron
-- Electron Packager
-- Electron Debian Installer
+- **Text Encoding Options**:
+  - Uppercase
+  - Lowercase
+  - SHA256
+  - Base64 Encoding/Decoding
+- **Desktop Application**: A native desktop application built with Electron.
+- **Responsive UI**: Responsive design for a seamless user experience.
+- **State Management**: Uses React's `useState` hook for managing state in the app.
+- **Event Handling**: Handles user inputs and actions effectively.
+
+## Technologies Used
+
+- **ReactJS**: JavaScript library for building user interfaces.
+- **Electron**: Framework for building cross-platform desktop apps using web technologies (HTML, CSS, and JavaScript).
+- **Bootstrap**: CSS framework for building responsive, mobile-first websites.
+- **CryptoJS**: JavaScript library for cryptographic algorithms (used for SHA256 encoding).
+- **Base64 Encoding/Decoding**: Used for encoding/decoding data in Base64 format.
+
+## Demo
+
+You can check out the live demo of the web version of this application [here](https://encoder-topaz.vercel.app).
+
+## Getting Started
+
+To get started with the **Electron** version of the app, follow these instructions:
+
+### Requirements
+
+Before proceeding with the build process, make sure you have the following installed:
+
+1. **Electron** – for building the Electron app.
+2. **Electron Packager** – for packaging the app into distributable formats.
+3. **Electron Debian Installer** – for creating `.deb` installer packages for Debian-based systems.
+4. nodejs and npm installed
+
+### Step-by-Step to complete the requirement
+
+#### 1. **Install Electron**
+
+To install Electron globally, run the following command:
 
 ```bash
+sudo npm install -g electron --unsafe-perm=true
+```
 
-# Install Electrom
+> **Note**: The `--unsafe-perm=true` flag is sometimes necessary for some Linux environments (particularly with system-level dependencies).
+
+#### 2. **Install Electron Debian Installer**
+
+To create `.deb` installer packages for your app, install the **electron-installer-debian** package globally:
+
+```bash
+sudo npm install -g electron-installer-debian
+```
+
+#### 3. **Install Electron Packager**
+
+**Electron Packager** is used for packaging your Electron app into a distributable format for different platforms. Install it globally:
+
+```bash
+sudo npm install -g electron-packager
+```
+
+---
+
+### Verify Installation
+
+To verify that the tools are installed correctly, you can check their versions:
+
+```bash
+electron --version
+electron-packager --version
+electron-installer-debian --version
+```
+
+---
+
+### Summary of Commands:
+
+```bash
+# Install Electron
 sudo npm install -g electron --unsafe-perm=true
 
-# installer debian package
+# Install Electron Debian Installer
 sudo npm install -g electron-installer-debian
 
 # Install Electron Packager
-sudo npm install electron-packager -g
-
+sudo npm install -g electron-packager
 ```
+---
 
-## Installation
+# Installation
 
-- Clone this Respo
+### 1. Clone the Repository
+
+Clone the repository from GitHub:
 
 ```bash
-https://github.com/mskian/electron-example.git
-```
-
-- Install dependencies
-
-```bash
+git clone https://github.com/mskian/electron-example.git
 cd electron-example
 ```
 
+### 2. Install Dependencies
+
+Install the required dependencies using **Yarn**:
+
 ```bash
-yarn
+yarn install
 ```
 
-- Build a Package for Linux
+### 3. Build the Electron Package for Linux
+
+To package the Electron app for Linux, run:
 
 ```bash
 yarn package-linux
 ```
 
-- Build `.deb` Package
+This will generate the necessary files to distribute your application on Linux.
+
+### 4. Build the `.deb` Installer Package
+
+To create a `.deb` installer package for your Linux distribution, run:
 
 ```bash
 yarn create-debian-installer
 ```
 
-## Customization
+This will generate a `.deb` file that you can use to install the app on a Linux system.
 
-### Add ICONS
+---
 
-- Add Icons on `assets/icons` Directory
-- open `https://appiconmaker.co` and Upload your ICON.Format `png` & size 512x512
-- After Generating the ICONS download iOS icons zip file & Extract all the icons in `assets/icons` (PS: Before Adding your Own ICONS Cleanup Default icons which already added for example APP)
-- Don't Rename the ICONS
-
-### Convert the website/blog to Desktop APP
-
-- open `main.js` File
-- Find the Below & Update your Blog/website URL
-
-```js
-var weburl = 'https://task.santhoshveer.com';
-```
-
-- Add Background Color Find this Line `backgroundColor: '#15171A',` & Replace it with your Background Color code
-- Test your APP
+### Summary of Commands:
 
 ```bash
-electron --disable-gpu main.js
+git clone https://github.com/mskian/electron-example.git
+cd electron-example
+yarn install
+yarn package-linux
+yarn create-debian-installer
 ```
 
-#### Deb package Setup
 
-- `debian.json` = `dest` - Set the location for `.deb` package Storage After the Package Build
-- `package.json` - Open it & replace it with your Name, Description and Version
 
-```json
-"scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "package-linux": "electron-packager .  electron-example --overwrite --platform=linux --arch=x64 --icon=assets/icons/Icon-1024.png --asar --prune=true --out=release-builds",
-    "create-debian-installer": "electron-installer-debian --src release-builds/electron-example-linux-x64/ --arch amd64 --config debian.json"
-  }
-```
+### Usage
 
-- `electron-example` - Replace with your APP Name
-- `release-builds/electron-example-linux-x64/` - same Replace `electron-example` with your APP Name
+1. Open the Electron application.
+2. Enter the text you want to encode or decode in the input box.
+3. Choose one of the encoding options:
+   - Uppercase: Converts the text to uppercase letters.
+   - Lowercase: Converts the text to lowercase letters.
+   - SHA256: Applies SHA256 hashing to the text.
+   - Base64 Encode: Encodes the text into Base64 format.
+   - Base64 Decode: Decodes the Base64 encoded text back to the original format.
+4. The result will be displayed below the input field.
 
-### Learn More about Electron
+## Code Overview
 
-Special thanks to Christian Engvall for this Awesome Tutorials
+- **main.js**: This is the entry point for the Electron app. It initializes and opens the Electron window.
+- **src/App.js**: The main React component that handles the UI and user interaction.
+- **TextForms.js**: Contains utility functions for encoding/decoding text.
+  - `toUppercase`: Converts the input text to uppercase.
+  - `toLowercase`: Converts the input text to lowercase.
+  - `toSHA256`: Hashes the input text using SHA256.
+  - `toBase64`: Encodes the text to Base64.
+  - `fromBase64`: Decodes the Base64 text back to the original format.
 
-| # | Topic | Description |
-|---|:------|-------------|
-| 01 | [Hello world tutorial](http://www.christianengvall.se/electron-hello-world/) | Get electron running on your computer |
-| 02 | [Testing electron app on Ubuntu](http://www.christianengvall.se/testing-electron-app-on-ubuntu-linux/) | Set up a VirtualBox virtual machine running Ubuntu and share app |
-| 03 | [Electron app icons](http://www.christianengvall.se/electron-app-icons/) | Adding icons to the app |
-| 04 | [Electron packager tutorial](http://www.christianengvall.se/electron-packager-tutorial/) | Creating packages for mac, windows and linux |
-| 05 | [Electron menu](http://www.christianengvall.se/electron-menu/) | Adding a main menu to your Electron app |
-| 06 | [Electron asar](http://www.christianengvall.se/electron-asar/) | Packaging the app with asar |
-| 07 | [DMG Installer](http://www.christianengvall.se/dmg-installer-electron-app/) | Creating a DMG-installer for macOS |
-| 08 | [Windows installer](http://www.christianengvall.se/electron-windows-installer/) | Creating a windows installer with electron-winstaller |
-| 09 | [Debian package installer](https://www.christianengvall.se/electron-installer-debian-package/) | Create a debian package |
-| 10 | [Update to latest Electron version](https://www.christianengvall.se/update-to-latest-electron-version/) | Update electron to the latest version using npm |
+## Future Enhancements
 
-## LICENSE
+- Improve UI/UX design for better user interaction.
+- Add additional encoding/decoding methods.
+- Provide better error handling and validations for inputs.
 
-MIT
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## About
+
+This is a simple desktop application built using **ReactJS** and **Electron** for encoding/decoding text in various formats.
